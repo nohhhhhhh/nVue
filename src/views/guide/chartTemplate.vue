@@ -10,16 +10,22 @@
                @layout-created="layoutCreatedEvent">
     <grid-item v-for="(item,index) in layout" :key=index :x.sync="item.x" :y.sync="item.y" :w.sync="item.w" :h.sync="item.h" :i="item.i">
       {{item.i}}
-      <line-chart :chart-data="item.lineChartData" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>
+
+      <br/>
+
+      <line-chart v-if="item.type == 'chart'" :chart-data="item.lineChartData" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>
+      <label v-if="item.type == 'label'">{{item.text}}</label>
       <button @click="removeGridItem(item.i)">-</button>
       <button @click="addGridItem">+</button>
+      <button @click="editGridItem(item.i)">edit</button>
+
     </grid-item>
   </grid-layout>
 </template>
 
 <script>
 import lineChart from '../../components/chart/LineChart'
-import data from '../../resources/product'
+import data from '../../resources/setting'
 
 export default {
   name: 'chartTemplate',
@@ -29,122 +35,12 @@ export default {
   data () {
     return {
       index: 0,
-      layout: [
-        {
-          "x":0,
-          "y":0,
-          "w":2,
-          "h":2,
-          "i":"0",
-          "lineChartData":{
-            "datasets":[
-              {
-                "label":"usl",
-                "backgroundColor":"transparent",
-                "borderColor":"#ff9948",
-                "pointRadius":0,
-                "data":[
-                  30,
-                  20,
-                  10
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "x":2,
-          "y":0,
-          "w":2,
-          "h":4,
-          "i":"1",
-          "lineChartData":{
-            "datasets":[
-              {
-                "label":"usl",
-                "backgroundColor":"transparent",
-                "borderColor":"#ff9948",
-                "pointRadius":0,
-                "data":[
-                  30,
-                  20,
-                  10
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "x":4,
-          "y":0,
-          "w":2,
-          "h":5,
-          "i":"2",
-          "lineChartData":{
-            "datasets":[
-              {
-                "label":"usl",
-                "backgroundColor":"transparent",
-                "borderColor":"#ff9948",
-                "pointRadius":0,
-                "data":[
-                  30,
-                  20,
-                  10
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "x":6,
-          "y":0,
-          "w":2,
-          "h":3,
-          "i":"3",
-          "lineChartData":{
-            "datasets":[
-              {
-                "label":"usl",
-                "backgroundColor":"transparent",
-                "borderColor":"#ff9948",
-                "pointRadius":0,
-                "data":[
-                  30,
-                  20,
-                  10
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "x":8,
-          "y":0,
-          "w":2,
-          "h":3,
-          "i":"4",
-          "lineChartData":{
-            "datasets":[
-              {
-                "label":"usl",
-                "backgroundColor":"transparent",
-                "borderColor":"#ff9948",
-                "pointRadius":0,
-                "data":[
-                  30,
-                  20,
-                  10
-                ]
-              }
-            ]
-          }
-        }
-      ]
+      layout: []
     }
   },
   methods: {
     layoutCreatedEvent: function (newLayout) {
+      this.layout = data
       console.log(data)
       console.log('Created layout: ', newLayout)
     },
@@ -157,6 +53,9 @@ export default {
     removeGridItem (item) {
       console.log(item-1);
       this.layout.splice(item - 1, 1)
+    },
+    editGridItem (item) {
+
     }
   }
 }
