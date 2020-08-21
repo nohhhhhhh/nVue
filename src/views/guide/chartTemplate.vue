@@ -13,7 +13,9 @@
 
       <br/>
 
-      <line-chart v-if="item.type == 'chart'" :chart-data="item.lineChartData" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>
+      <line-chart v-if="item.type == 'lineChart'" :chart-data="item.lineChartData" :options="{responsive: true, maintainAspectRatio: false}"></line-chart>
+      <bar-chart v-if="item.type == 'barChart'" :chart-data="item.lineChartData" :options="{responsive: true, maintainAspectRatio: false}"></bar-chart>
+
       <label v-if="item.type == 'label'">{{item.text}}</label>
       <button @click="removeGridItem(item.i)">-</button>
       <button @click="addGridItem">+</button>
@@ -25,12 +27,14 @@
 
 <script>
 import lineChart from '../../components/chart/LineChart'
+import barChart from '../../components/chart/BarChart'
 import data from '../../resources/setting'
 
 export default {
   name: 'chartTemplate',
   components: {
-    lineChart
+    lineChart,
+    barChart
   },
   data () {
     return {
