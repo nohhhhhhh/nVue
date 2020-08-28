@@ -1,5 +1,7 @@
 [
   {
+    "socketConnect": "",
+    "socketUrl" : "http://localhost:8080/commonSocket",
     "x":0,
     "y":0,
     "w":2,
@@ -7,18 +9,34 @@
     "i":"0",
     "type" : "lineChart",
     "lineChartData":{
-      "labels": ["January", "February", "March"],
-      "datasets":[
+      "datasets": [
         {
-          "label":"usl",
-          "backgroundColor":"transparent",
-          "borderColor":"rgb(255, 99, 132)",
-          "pointRadius":0,
-          "data":[
-            30,
-            20,
-            10
-          ]
+          "label": "usl",
+          "backgroundColor": "transparent",
+          "borderColor": "#ff9948",
+          "pointRadius": 0,
+          "data": []
+        },
+        {
+          "label": "data",
+          "backgroundColor": "transparent",
+          "borderColor": "rgb(26,111,168)",
+          "pointBackgroundColor": "rgb(26,111,168)",
+          "data": []
+        },
+        {
+          "label": "cl",
+          "backgroundColor": "transparent",
+          "borderColor": "#606060",
+          "pointRadius": 0,
+          "data": []
+        },
+        {
+          "label": "lsl",
+          "backgroundColor": "transparent",
+          "borderColor": "#ff9948",
+          "pointRadius": 0,
+          "data": []
         }
       ]
     }
@@ -31,8 +49,6 @@
     "i":"1",
     "type" : "barChart",
     "lineChartData":{
-      "type": "bar",
-      "data": {
         "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         "datasets": [{
           "label": "# of Votes",
@@ -55,16 +71,6 @@
           ],
           "borderWidth": 1
         }]
-      },
-      "options": {
-        "scales": {
-          "yAxes": [{
-            "ticks": {
-              "beginAtZero": true
-            }
-          }]
-        }
-      }
     }
   },
   {

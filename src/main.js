@@ -6,7 +6,6 @@ import router from './router/route'
 import VueGridLayout from 'vue-grid-layout'
 
 Vue.config.productionTip = false
-
 Vue.use(VueGridLayout)
 
 /* eslint-disable no-new */
